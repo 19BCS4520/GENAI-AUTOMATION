@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime
 import google.generativeai as genai
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters
 
 # Load environment variables from .env file
 load_dotenv()
