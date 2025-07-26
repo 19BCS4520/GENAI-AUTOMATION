@@ -1,0 +1,53 @@
+"Issue ID","Issue Description","Date Occurred","Date Closed","Brief Explanation (2–3 Points)","Resolution Steps","Implementation Details","Number of Collaboration Calls (Teams Involved)","Responsible Team(s)"
+"004","SRE: Service Latency Spike","2025-07-10","2025-07-11","1. Sudden spike in response times/latency for users.
+2. Caused by misconfigured alert thresholds and unoptimized resource allocation.
+3. Fixed via tuning and resource scaling.","1. Analyze metrics and traces.
+2. Optimize server resources.
+3. Adjust alert thresholds.
+4. Validate changes in staging.","Scaled resources on prod servers.
+Updated runbooks & alert configs.
+Ran post-change load tests.","2 calls: SRE team (analysis), Dev team (deploy resource tune)","SRE, Development"
+"005","Network: Intermittent Connectivity Loss","2025-07-14","2025-07-15","1. Users faced random disconnections from app.
+2. Isolated to faulty network switch.
+3. Fixed by hardware replacement and routing updates.","1. Trace affected network path.
+2. Replace faulty hardware.
+3. Apply routing updates.
+4. Test connections.","Installed new switch.
+Tested all links after rerouting.
+Monitored stability post-fix.","3 calls: Network team, SRE (monitoring), Infra team (hardware install)","Network, SRE, Infrastructure"
+"006","Patch: Critical Security Patch Failure","2025-07-18","2025-07-18","1. Attempt to patch OS for security led to failed boot on some servers.
+2. Due to incompatible firmware.
+3. Rolled back and applied correct patch version.","1. Identify impacted servers.
+2. Rollback failed patch.
+3. Test and deploy correct patch.
+4. Monitor system health.","Maintained “known good” images.
+Applied staged patch rollouts post validation.","4 calls: Infra team, DevOps, Security, Vendor support","Infra, DevOps, Security, Vendor"
+"007","Update: App Update Broke Payment Gateway","2025-07-19","2025-07-19","1. New app version caused payment failures.
+2. Incompatible API version with gateway.
+3. Hotfix & gateway config updated same day.","1. Diagnose payment errors.
+2. Identify API incompatibility.
+3. Create & deploy hotfix.
+4. Notify customers post-restoration.","Applied backward compatibility patch.
+Coordinated with payment vendor.
+Updated version docs.","3 calls: Dev, Payment Vendor, SRE","Development, SRE, Payment Vendor"
+"008","SRE: Disk Space Exhaustion","2025-07-16","2025-07-17","1. Critical service stopped due to full disk.
+2. Log rotation misconfigured and old logs not purged.
+3. Manual cleanup and reconfigured rotation.","1. Free up disk by purging logs.
+2. Fix logrotate configs.
+3. Add monitoring for disk usage.
+4. Validate on non-prod first.","Implemented automated log rotation.
+Set up alerting for disk usage threshold breaches.","2 calls: SRE, DevOps","SRE, DevOps"
+"009","Network: DNS Resolution Failure","2025-07-13","2025-07-13","1. Some subdomains failed to resolve.
+2. Sync error in DNS replication after zone update.
+3. Fixed by manual sync and restoring backup records.","1. Audit DNS zone files.
+2. Manually sync DNS servers.
+3. Restore from backups.
+4. Test domain access.","Automated DNS backups scheduled.
+Strengthened pipeline for DNS propagation checks.","2 calls: Network, SRE","Network, SRE"
+"010","Patch: Software Patch Broke Monitoring","2025-07-21","2025-07-22","1. Recent patch update caused monitoring agents to go offline.
+2. Unlisted agent version incompatible with new platform.
+3. Rolled back monitoring agent, then patched properly.","1. Identify agent process failures.
+2. Rollback agent to stable version.
+3. Coordinate cross-team verification.
+4. Patch/test again.","Created compatibility checklist for updates.
+Staged upgrades with rollback plan documented.","3 calls: SRE, Monitoring Team, Platform Engineering","SRE, Monitoring, Platform Engg"
