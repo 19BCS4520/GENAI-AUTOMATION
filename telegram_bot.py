@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime
 import google.generativeai as genai
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters  # ✅ Fixed import
 
 # Load environment variables from .env file
 load_dotenv()
@@ -100,7 +100,6 @@ def handle_message(update, context):
         return
 
     try:
-        # 1. Check for today's issues
         if is_today_query(user_message):
             today = pd.Timestamp.now().normalize()
             today_issues = df_issues[df_issues['Date Occurred'].dt.normalize() == today]
@@ -114,7 +113,6 @@ def handle_message(update, context):
                 update.message.reply_text(response)
             return
 
-        # 2. Check for issue number request
         issue_num = extract_issue_number(user_message)
         if issue_num and 1 <= issue_num <= len(df_issues):
             row = df_issues.iloc[issue_num - 1]
@@ -127,7 +125,6 @@ def handle_message(update, context):
             update.message.reply_text(response)
             return
 
-        # 3. Default → Gemini LLM summarization
         ai_response = filter_and_summarize_issues_with_llm(user_message, df_issues)
         update.message.reply_text(ai_response)
 
